@@ -3,14 +3,15 @@
   "private": true,
   "homepage": "https://https://edialvesgon.github.io/Lading-page-Dra.Debora",
   "version": "0.0.0",
-  "deploy": "gh-pages -d build",
-  "predeploy": "npm run build",
+  
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d build",
+  "predeploy": "npm run build"
   },
   "dependencies": {
     "react": "^19.1.1",
