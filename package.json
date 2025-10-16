@@ -1,10 +1,10 @@
 {
   "name": "page-lading",
   "private": true,
-  "homepage": "https://https://edialvesgon.github.io/Lading-page-Dra.Debora",
+  "homepage": "https://github.com/Edialvesgon/Lading-page-Dra.Debora",
   "version": "0.0.0",
   
-  "type": "module",
+  "type": "module", 
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
