@@ -4,6 +4,8 @@ import '../styles/Home.css'
 import '../styles/header.css'
 import '../styles/Solution.css'
 import '../styles/Pricing.css'
+import '../styles/Contact.css'
+import check from '../assets/check.svg'
 import logo from '../assets/Untitled (2).svg'
 import close from '../assets/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg'
 import menu from '../assets/menu_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg'
@@ -13,11 +15,16 @@ import rectagleOne from '../assets/images/retanguloMaior.svg'
 import rectagleTwo from '../assets/images/retanguloMenor.svg'
 import Card from '../components/Card'
 import "../styles/Hero.css"
+import '../styles/Rodape.css'
 
 export default function Home() {
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
+    // const [btcAmount, setBtcAmoin] = useState([]);
 
+    // function consultarBtc() {
+    //     fetch("https://economia.awesomeapi.com.br/json/BTC").then(res => res.json()).then(res => setBtcAmoin(res[0].bid)).catch(console.error)
+    // }
 
     return (
 
@@ -185,7 +192,7 @@ export default function Home() {
             </section>
 
             {/* testimonials */}
-            <section id="testimonials">
+            <section id="testimonials" >
                 <header>
                     <span>
                         <p className="desktop-only">
@@ -199,6 +206,31 @@ export default function Home() {
                     </p>
                 </header>
                 <section className="carousel">
+                    <div className="carousel-content">
+                        <div className="carousel-card">
+                            <img src={menu} alt="Imagem perfil cliente" />
+                            <span className="testimony">
+                                <p>
+                                    Certamente o mercado chinês de eletricos está bombando, só existe
+                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
+                                </p>
+                            </span>
+                            <span className="rating">
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
+                            </span>
+                            <span className="names">
+                                <p>Ellon Ma</p>
+                                <p>CEO BING CHILLING</p>
+                            </span>
+                        </div>
+
+
+                    </div>
+
                     <div className="carousel-content">
                         <div className="carousel-card">
                             <img src={menu} alt="Imagem perfil cliente" />
@@ -291,12 +323,12 @@ export default function Home() {
                         <h2>Grátis</h2>
                         <Button text="Pedir agora" secondary key="free" />
                         <span className="hr" /><span className="features">
-                            <img src={menu} alt="ícone check" width={24} height={24} />
+                            <img src={check} alt="ícone check" width={24} height={24} />
                             <p>Retire na loja</p>
                         </span>
                         <ul className="features">
                             <li>
-                                <img src={menu} alt="ícone check" width={24} height={24} />
+                                <img src={check} alt="ícone check" width={24} height={24} />
                                 <p>Apenas 1 por CPF</p>
                             </li>
                         </ul>
@@ -317,15 +349,15 @@ export default function Home() {
                         <Button text="Pedir agora" key="premium" />
                         <span className="hr" />
                         <span className="features">
-                            <img src={menu} alt="ícone check" width={24} height={24} />
+                            <img src={check} alt="ícone check" width={24} height={24} />
                             <p>2 Entregas</p>
                         </span>
                         <span className="features">
-                            <img src={menu} alt="ícone check" width={24} height={24} />
+                            <img src={check} alt="ícone check" width={24} height={24} />
                             <p>5 Refeições por semana</p>
                         </span>
                         <span className="features">
-                            <img src={menu} alt="ícone check" width={24} height={24} />
+                            <img src={check} alt="ícone check" width={24} height={24} />
                             <p>2 Sucos por semana</p>
                         </span>
                     </div>
@@ -339,18 +371,99 @@ export default function Home() {
                         <h2>Grátis</h2>
                         <Button text="Pedir agora" secondary key="free" />
                         <span className="hr" /><span className="features">
-                            <img src={menu} alt="ícone check" width={24} height={24} />
+                            <img src={check} alt="ícone check" width={24} height={24} />
                             <p>Retire na loja</p>
                         </span>
                         <ul className="features">
                             <li>
-                                <img src={menu} alt="ícone check" width={24} height={24} />
+                                <img src={check} alt="ícone check" width={24} height={24} />
                                 <p>Apenas 1 por CPF</p>
                             </li>
                         </ul>
                     </div>
                 </section>
             </section>
+
+            {/* <section id='contact'>
+                <header>
+                    <p className="desktop-only">Planos e preços</p>
+                    <h2>Nossos planos</h2>
+                </header>
+                <div>
+                    <input id='email' />
+                    <input id="motivo" />
+                    <button></button>
+                </div>
+            </section> */}
+
+
+            <section id="contact" className='container'>
+                <header>
+                    <p className="desktop-only">Planos e preços</p>
+                    <h2>Nossos planos</h2>
+                </header>
+                <div >
+
+                    <p className="contact-text">
+                        Entre em contato, estamos dispostos a tirar qualquer dúvida,
+                        seja um orçamento, uma dúvida técnica de algum de nossos produtos.
+                        Estamos à disposição para responder. 😎
+                    </p>
+
+                    <form className="contact-form">
+                        <input type="email" id="email" placeholder="Seu melhor Email" required />
+                        <input
+                            type="text"
+                            id="motivo"
+                            placeholder="Motivo do contato. Ex: Gostei muito do produto X, poderia me enviar um orçamento?"
+                            required
+                        />
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+                {/* <h1>valor do btc</h1>
+                {btcAmount &&
+                    <p>{btcAmount}
+                    </p>}
+                <button onClick={consultarBtc}>consutltar brc</button> */}
+            </section>
+
+            {/* btc */}
+
+            <footer id='rodape'>
+                <section>
+                    <span>
+                        <h1>Logo marca</h1>
+                        <p>aaa</p>
+                    </span>
+                    <span>
+                        <h1>empresa</h1>
+                        <p>osdif</p>
+                        <p>osdif</p>
+                        <p>osdif</p>
+
+                    </span>
+                    <span>
+                        <h1>funcionalidades</h1>
+                        <p>osdif</p>
+                        <p>osdif</p>
+                        <p>osdif</p>
+
+                    </span>
+                    <span>
+                        <h1>recursos</h1>
+                        <p>osdif</p>
+                        <p>osdif</p>
+                        <p>osdif</p>
+                        <p>osdif</p>
+                        <p>osdif</p>
+
+                    </span>
+
+                </section>
+            </footer>
+
+
         </>
     )
 }

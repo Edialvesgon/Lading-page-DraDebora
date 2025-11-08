@@ -18,6 +18,10 @@
     header :first-child {
         color: var(--primary-color);
         font-weight: var(--fw-bold);
+
+        /* >h2 {
+            background-color: red;
+        } */
     }
 
     p {
@@ -81,7 +85,7 @@
 
 @keyframes swipe {
     0% {
-        transform: translateX(0);
+        transform: translateX(0%);
     }
 
     100% {
@@ -101,16 +105,18 @@
         .carousel {
             overflow-x: hidden;
             overflow-y: hidden;
-            width: 50%;
+            width: 70%;
+            border-radius: 30px;
         }
 
         .testimony {
-            width: 80%;
+            width: 50%;
         }
 
         .carousel-card {
             min-width: 30rem;
-            min-height: 26.875rem;
+            min-height: 12.875rem;
+
         }
     }
 }
