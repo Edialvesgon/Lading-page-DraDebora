@@ -33,6 +33,15 @@
         font-weight: var(--fw-bold);
     }
 
+    .icone {
+        padding-inline: 0.5rem;
+        color: white;
+        width: 3rem;
+        height: 3rem;
+    }
+
+
+
 
 }
 
@@ -61,10 +70,22 @@
         }
 
         p {
+
             font-size: var(--fs-sm);
             font-weight: var(--fw-bold);
             color: var(--second-text-color);
 
         }
+
+
+        .icone {
+            padding-inline: 0.5rem;
+
+            width: 3rem;
+            height: 3rem;
+            color: var(--terceira-color);
+        }
+
+
     }
 }

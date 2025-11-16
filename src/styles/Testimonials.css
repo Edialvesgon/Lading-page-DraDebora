@@ -1,5 +1,4 @@
 #testimonials {
-    height: 100vh;
     background: var(--secondary-color);
     display: flex;
     flex-direction: column;
@@ -60,7 +59,7 @@
 
 
         >img {
-            width: 130px;
+            width: 100px;
             height: 100px;
             border-radius: 50%;
         }

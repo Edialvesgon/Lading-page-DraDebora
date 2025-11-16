@@ -5,6 +5,11 @@ import '../styles/header.css'
 import '../styles/Solution.css'
 import '../styles/Pricing.css'
 import '../styles/Contact.css'
+
+import vector from '../assets/Vector.svg'
+import ryan from '../assets/Rayan.png'
+import CarouselCard from '../components/CarouselCard'
+import elon from '../assets/ellon.svg'
 import check from '../assets/check.svg'
 import logo from '../assets/Untitled (2).svg'
 import close from '../assets/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg'
@@ -14,8 +19,10 @@ import Button from '../components/Button'
 import rectagleOne from '../assets/images/retanguloMaior.svg'
 import rectagleTwo from '../assets/images/retanguloMenor.svg'
 import Card from '../components/Card'
+import award from '../assets/award.svg'
 import "../styles/Hero.css"
 import '../styles/Rodape.css'
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function Home() {
 
@@ -25,6 +32,54 @@ export default function Home() {
     // function consultarBtc() {
     //     fetch("https://economia.awesomeapi.com.br/json/BTC").then(res => res.json()).then(res => setBtcAmoin(res[0].bid)).catch(console.error)
     // }
+
+    interface EmailPayload {
+        destinatario: string;
+        mensagem: string;
+    }
+
+    // ... (dentro do seu componente)
+
+    // 2. Aqui o TypeScript já infere que 'email' é string, 
+    // mas poderíamos ser explícitos: useState<string>("")
+    const [email, setEmail] = useState("");
+    const [motivo, setMotivo] = useState("");
+
+    const username = "user";
+    const password = "";
+
+    const credentials = `${username}:${password}`;
+
+    const base64Credentials = btoa(credentials);
+    console.log(base64Credentials)
+    const enviarEmail = async () => {
+
+        const payload: EmailPayload = {
+            destinatario: email,
+            mensagem: motivo
+        };
+
+        console.log("Enviando para API:", payload);
+
+        try {
+            const response = await fetch("http://localhost:8081/email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert("Dados enviados com sucesso!");
+            } else {
+                alert("Erro ao enviar dados!");
+            }
+        } catch (error) {
+            console.error("Erro:", error);
+        }
+    };
+
 
     return (
 
@@ -154,9 +209,9 @@ export default function Home() {
                     </p>
                 </header>
                 <section className="even-columns">
-                    <Card titulo='Produto Vencedor' paragrafo='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, excepturi dolorem. Nisi dolores ipsam natus fugit accusamus sed minima, dolore autem enim unde nam iusto non. Architecto inventore sunt maiores!' />
-                    <Card titulo='Produto Vencedor' paragrafo='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, excepturi dolorem. Nisi dolores ipsam natus fugit accusamus sed minima, dolore autem enim unde nam iusto non. Architecto inventore sunt maiores!' />
-                    <Card titulo='Produto Vencedor' paragrafo='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, excepturi dolorem. Nisi dolores ipsam natus fugit accusamus sed minima, dolore autem enim unde nam iusto non. Architecto inventore sunt maiores!' />
+                    <Card titulo='Produto Vencedor' paragrafo='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, excepturi dolorem. Nisi dolores ipsam natus fugit accusamus sed minima, dolore autem enim unde nam iusto non. Architecto inventore sunt maiores!' award={award} />
+                    <Card titulo='Produto Vencedor' paragrafo='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, excepturi dolorem. Nisi dolores ipsam natus fugit accusamus sed minima, dolore autem enim unde nam iusto non. Architecto inventore sunt maiores!' award={award} />
+                    <Card titulo='Produto Vencedor' paragrafo='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, excepturi dolorem. Nisi dolores ipsam natus fugit accusamus sed minima, dolore autem enim unde nam iusto non. Architecto inventore sunt maiores!' award={award} />
 
                     {/* <div className="card">
                         <span>
@@ -205,110 +260,97 @@ export default function Home() {
                         comida congelada tem de ser algo sem gosto, acompanhe abaixo os testemunhos de quem já comprou e aprovou.
                     </p>
                 </header>
-                <section className="carousel">
-                    <div className="carousel-content">
-                        <div className="carousel-card">
-                            <img src={menu} alt="Imagem perfil cliente" />
-                            <span className="testimony">
-                                <p>
-                                    Certamente o mercado chinês de eletricos está bombando, só existe
-                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
-                                </p>
-                            </span>
-                            <span className="rating">
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
-                            </span>
-                            <span className="names">
-                                <p>Ellon Ma</p>
-                                <p>CEO BING CHILLING</p>
-                            </span>
-                        </div>
 
+                <section className='carousel'>
+                    <CarouselCard elon={elon} menu={vector} />
+                    <CarouselCard elon={ryan} menu={vector} />
+                    <CarouselCard elon={elon} menu={vector} />
+                    <CarouselCard elon={ryan} menu={vector} />
 
-                    </div>
-
-                    <div className="carousel-content">
-                        <div className="carousel-card">
-                            <img src={menu} alt="Imagem perfil cliente" />
-                            <span className="testimony">
-                                <p>
-                                    Certamente o mercado chinês de eletricos está bombando, só existe
-                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
-                                </p>
-                            </span>
-                            <span className="rating">
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
-                            </span>
-                            <span className="names">
-                                <p>Ellon Ma</p>
-                                <p>CEO BING CHILLING</p>
-                            </span>
-                        </div>
-
-
-                    </div>
-
-                    <div className="carousel-content">
-                        <div className="carousel-card">
-                            <img src={menu} alt="Imagem perfil cliente" />
-                            <span className="testimony">
-                                <p>
-                                    Certamente o mercado chinês de eletricos está bombando, só existe
-                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
-                                </p>
-                            </span>
-                            <span className="rating">
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
-                            </span>
-                            <span className="names">
-                                <p>Ellon Ma</p>
-                                <p>CEO BING CHILLING</p>
-                            </span>
-                        </div>
-
-
-                    </div>
-                    <div className="carousel-content">
-                        <div className="carousel-card">
-                            <img src={menu} alt="Imagem perfil cliente" />
-                            <span className="testimony">
-                                <p>
-                                    Certamente o mercado chinês de eletricos está bombando, só existe
-                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
-                                </p>
-                            </span>
-                            <span className="rating">
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela" width={22} height={20} />
-                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
-                            </span>
-                            <span className="names">
-                                <p>Ellon Ma</p>
-                                <p>CEO BING CHILLING</p>
-                            </span>
-                        </div>
-
-
-                    </div>
                 </section>
-            </section>
+                {/* <section className="carousel">
+
+
+
+
+                    <div className="carousel-content">
+                        <div className="carousel-card">
+                            <img src={menu} alt="Imagem perfil cliente" />
+                            <span className="testimony">
+                                <p>
+                                    Certamente o mercado chinês de eletricos está bombando, só existe
+                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
+                                </p>
+                            </span>
+                            <span className="rating">
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
+                            </span>
+                            <span className="names">
+                                <p>Ellon Ma</p>
+                                <p>CEO BING CHILLING</p>
+                            </span>
+                        </div>
+
+
+                    </div>
+
+                    <div className="carousel-content">
+                        <div className="carousel-card">
+                            <img src={menu} alt="Imagem perfil cliente" />
+                            <span className="testimony">
+                                <p>
+                                    Certamente o mercado chinês de eletricos está bombando, só existe
+                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
+                                </p>
+                            </span>
+                            <span className="rating">
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
+                            </span>
+                            <span className="names">
+                                <p>Ellon Ma</p>
+                                <p>CEO BING CHILLING</p>
+                            </span>
+                        </div>
+
+
+                    </div>
+                    <div className="carousel-content">
+                        <div className="carousel-card">
+                            <img src={menu} alt="Imagem perfil cliente" />
+                            <span className="testimony">
+                                <p>
+                                    Certamente o mercado chinês de eletricos está bombando, só existe
+                                    uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
+                                </p>
+                            </span>
+                            <span className="rating">
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela" width={22} height={20} />
+                                <img src={menu} alt="ícone estrela sem fundo" width={20} height={22} />
+                            </span>
+                            <span className="names">
+                                <p>Ellon Ma</p>
+                                <p>CEO BING CHILLING</p>
+                            </span>
+                        </div>
+
+
+                    </div>
+                </section> */}
+            </section >
 
             {/* pricing */}
-            <section id="pricing" className="container">
+            < section id="pricing" className="container" >
                 <header>
                     <p className="desktop-only">Planos e preços</p>
                     <h2>Nossos planos</h2>
@@ -382,7 +424,7 @@ export default function Home() {
                         </ul>
                     </div>
                 </section>
-            </section>
+            </section >
 
             {/* <section id='contact'>
                 <header>
@@ -397,7 +439,7 @@ export default function Home() {
             </section> */}
 
 
-            <section id="contact" className='container'>
+            < section id="contact" className='container' >
                 <header>
                     <p className="desktop-only">Planos e preços</p>
                     <h2>Nossos planos</h2>
@@ -411,14 +453,16 @@ export default function Home() {
                     </p>
 
                     <form className="contact-form">
-                        <input type="email" id="email" placeholder="Seu melhor Email" required />
+                        <input type="email" id="email" placeholder="Seu melhor Email" required onChange={(e) => setEmail(e.target.value)} />
                         <input
                             type="text"
                             id="motivo"
                             placeholder="Motivo do contato. Ex: Gostei muito do produto X, poderia me enviar um orçamento?"
                             required
+                            onChange={(e) => setMotivo(e.target.value)}
+
                         />
-                        <button type="submit">Enviar</button>
+                        <button type="submit" onClick={enviarEmail}>Enviar</button>
                     </form>
                 </div>
                 {/* <h1>valor do btc</h1>
@@ -426,42 +470,49 @@ export default function Home() {
                     <p>{btcAmount}
                     </p>}
                 <button onClick={consultarBtc}>consutltar brc</button> */}
-            </section>
+            </section >
 
             {/* btc */}
 
-            <footer id='rodape'>
+            < footer id='rodape' >
                 <section>
                     <span>
                         <h1>Logo marca</h1>
-                        <p>aaa</p>
+                        {/* <img src={instagran} alt="insta" />
+                        <img src={facebook} alt="face" />
+                        <img src={youtube} alt="you" /> */}
+                        <span><FaInstagram className='icone' /></span>
+                        <span><FaYoutube className='icone' /></span>
+                        <span><FaFacebook className='icone' /></span>
+
+
+
+
+
                     </span>
                     <span>
                         <h1>empresa</h1>
-                        <p>osdif</p>
-                        <p>osdif</p>
-                        <p>osdif</p>
+                        <p>Sobre nós</p>
+                        <p>Faça parte do time</p>
+                        <p>Blog</p>
 
                     </span>
                     <span>
                         <h1>funcionalidades</h1>
-                        <p>osdif</p>
-                        <p>osdif</p>
-                        <p>osdif</p>
+                        <p>Marketing</p>
+                        <p>Análise de dados</p>
+                        <p>Boot discord</p>
 
                     </span>
                     <span>
                         <h1>recursos</h1>
-                        <p>osdif</p>
-                        <p>osdif</p>
-                        <p>osdif</p>
-                        <p>osdif</p>
-                        <p>osdif</p>
-
+                        <p>IOS & Android</p>
+                        <p>Teste a Demo</p>
+                        <p>Clientes</p>
+                        <p>API</p>
                     </span>
-
                 </section>
-            </footer>
+            </footer >
 
 
         </>
