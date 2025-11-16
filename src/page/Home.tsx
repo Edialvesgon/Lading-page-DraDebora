@@ -23,10 +23,13 @@ import award from '../assets/award.svg'
 import "../styles/Hero.css"
 import '../styles/Rodape.css'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { RemoveScroll } from 'react-remove-scroll'
 
 export default function Home() {
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+
     // const [btcAmount, setBtcAmoin] = useState([]);
 
     // function consultarBtc() {
@@ -117,31 +120,33 @@ export default function Home() {
 
                     <div className="mobile-menu">
                         {showMobileMenu ?
-                            <div className="mobile-menu-content">
-                                <div className="container flex">
-                                    <ul>
-                                        <li>
-                                            <a onClick={() => setShowMobileMenu(false)} href="#">Home</a>
+                            <RemoveScroll>
+                                <div className="mobile-menu-content">
+                                    <div className="container flex">
+                                        <ul>
+                                            <li>
+                                                <a onClick={() => setShowMobileMenu(false)} href="#">Home</a>
 
-                                        </li>
-                                        <li>
-                                            <a onClick={() => setShowMobileMenu(false)} href="#solution">Soluções</a>
-                                        </li>
-                                        <li>
-                                            <a onClick={() => setShowMobileMenu(false)} href="#testimonials">Depoimentos</a>
-                                        </li>
-                                        <li>
-                                            <a onClick={() => setShowMobileMenu(false)} href="#pricing">Preços</a>
-                                        </li>
-                                        <li>
-                                            <a onClick={() => setShowMobileMenu(false)} href="#contact">Contato</a>
-                                        </li>
-                                    </ul>
-                                    <span onClick={() => setShowMobileMenu(!showMobileMenu)} className="btn-wrapper menu-icon">
-                                        <img src={close} alt="ícone fechar menu" width={24} height={24} />
-                                    </span>
+                                            </li>
+                                            <li>
+                                                <a onClick={() => setShowMobileMenu(false)} href="#solution">Soluções</a>
+                                            </li>
+                                            <li>
+                                                <a onClick={() => setShowMobileMenu(false)} href="#testimonials">Depoimentos</a>
+                                            </li>
+                                            <li>
+                                                <a onClick={() => setShowMobileMenu(false)} href="#pricing">Preços</a>
+                                            </li>
+                                            <li>
+                                                <a onClick={() => setShowMobileMenu(false)} href="#contact">Contato</a>
+                                            </li>
+                                        </ul>
+                                        <span onClick={() => setShowMobileMenu(!showMobileMenu)} className="btn-wrapper menu-icon">
+                                            <img src={close} alt="ícone fechar menu" width={24} height={24} />
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
+                            </RemoveScroll>
                             :
                             <span onClick={() => setShowMobileMenu(!showMobileMenu)} className="btn-wrapper" >
                                 <img src={menu} alt="ícone menu" width={24} height={24} />
