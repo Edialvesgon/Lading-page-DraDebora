@@ -41,20 +41,17 @@ export default function Home() {
         mensagem: string;
     }
 
-    // ... (dentro do seu componente)
 
-    // 2. Aqui o TypeScript já infere que 'email' é string, 
-    // mas poderíamos ser explícitos: useState<string>("")
     const [email, setEmail] = useState("");
     const [motivo, setMotivo] = useState("");
 
-    const username = "user";
-    const password = "";
+    // const username = "user";
+    // const password = "";
 
-    const credentials = `${username}:${password}`;
+    // const credentials = `${username}:${password}`;
 
-    const base64Credentials = btoa(credentials);
-    console.log(base64Credentials)
+    // const base64Credentials = btoa(credentials);
+    //console.log(base64Credentials)
     const enviarEmail = async () => {
 
         const payload: EmailPayload = {
@@ -446,8 +443,8 @@ export default function Home() {
 
             < section id="contact" className='container' >
                 <header>
-                    <p className="desktop-only">Planos e preços</p>
-                    <h2>Nossos planos</h2>
+                    <p className="desktop-only">Você também pode</p>
+                    <h2>Entre em contato conosco</h2>
                 </header>
                 <div >
 
@@ -486,9 +483,10 @@ export default function Home() {
                         {/* <img src={instagran} alt="insta" />
                         <img src={facebook} alt="face" />
                         <img src={youtube} alt="you" /> */}
-                        <span><FaInstagram className='icone' /></span>
-                        <span><FaYoutube className='icone' /></span>
-                        <span><FaFacebook className='icone' /></span>
+                        <span className='icone' >
+                            <FaInstagram className='icon' />
+                            <FaYoutube className='icon' />
+                            <FaFacebook className='icon' /></span>
 
 
 
